@@ -35,23 +35,32 @@
 			<div class="body">
 				<div class="grid-container">
 					<div class="grid-item item-1">
-						<img src="../Assets/ps5.jpeg" alt="PlayStation 5 Console (Disc Version) With Controller" class="img" />
+						<img class="small" id="img1" src="../Assets/ps5.jpeg" alt="ps51" onclick="changeImg(this.id)" />
+						<img class="small" id="img2" src="../Assets/ps52.jpeg" alt="ps52" onclick="changeImg(this.id)" />
+						<img class="small" id="img3" src="../Assets/ps53.jpeg" alt="ps53" onclick="changeImg(this.id)" />
+						<img class="small" id="img4" src="../Assets/ps51.jpeg" alt="ps51" onclick="changeImg(this.id)" />
 					</div>
 					<div class="grid-item item-2">
-						<div>PlayStation 5 Console</div>
-						<div>(Disc Version) With Controller</div>
-						<div><p>Model Number : CFI-1118A / PS5_Disc / CFI-1216A / CFI - 1116A/ CFI-1100A, CFI-1200A, CFI-1000A / CFI-1218A</p></div>
-						<strong>EGB 22499.00</strong>
+						<img src="../Assets/ps5.jpeg" alt="PlayStation 5 Console (Disc Version) With Controller" class="img" id="imgHolder" />
+					</div>
+					<div class="grid-item item-3">
+						<div id="brand">Sony</div>
+						<div id="title">PlayStation 5 Console (Disc Version) With Controller</div>
+						<div><p id="model">Model Number : CFI-1118A / PS5_Disc / CFI-1216A / CFI - 1116A/ CFI-1100A, CFI-1200A, CFI-1000A / CFI-1218A</p></div>
+						<span>EGP</span>
+						<strong id="price">22499.00</strong>
 						<div>
-							<select name="quantity" id="">
+							<select name="quantity" id="quantity" onchange="displayValue(this.id)">
+								<option value="selected" disabled selected>Qunatity</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 							</select>
 							<input type="button" value="Add To Cart" />
 						</div>
+						<div id="cart"><p>Amount of items to be added in cart</p></div>
 					</div>
-					<div class="grid-item item-3">
+					<div class="grid-item item-4">
 						<div>No warranty</div>
 						<div>sold by <a href="">market</a></div>
 						<div id="ids">
@@ -60,18 +69,46 @@
 							<p id="third">Secure Shopping</p>
 						</div>
 					</div>
-					<div class="grid-item item-4">
+					<div class="grid-item item-5">
 						<div class="productInfo">
-							<p>
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic sint cum aut quia rerum. Recusandae molestias excepturi corporis veniam ut iste fugiat eos, voluptatibus totam? Asperiores
-								ducimus accusamus blanditiis voluptas debitis omnis? Incidunt, ea. Voluptatem veniam officia minima dolorum beatae? Laborum quam molestiae maxime ducimus fugit et recusandae
-								perferendis ipsam! Vel rerum autem voluptatibus sint tempora deserunt quo nemo ab et itaque, maiores in a illum aliquid soluta, quis porro nesciunt assumenda iste non, similique hic?
-								Enim blanditiis magnam eaque minima suscipit expedita quo! Ad reprehenderit sunt mollitia debitis, nesciunt eveniet porro ut sit odio inventore labore id nobis suscipit!
-							</p>
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic sint cum aut quia rerum. Recusandae molestias excepturi corporis veniam ut iste fugiat eos, voluptatibus totam? Asperiores
+							ducimus accusamus blanditiis voluptas debitis omnis? Incidunt, ea. Voluptatem veniam officia minima dolorum beatae? Laborum quam molestiae maxime ducimus fugit et recusandae perferendis
+							ipsam! Vel rerum autem voluptatibus sint tempora deserunt quo nemo ab et itaque, maiores in a illum aliquid soluta, quis porro nesciunt assumenda iste non, similique hic? Enim blanditiis
+							magnam eaque minima suscipit expedita quo! Ad reprehenderit sunt mollitia debitis, nesciunt eveniet porro ut sit odio inventore labore id nobis suscipit!
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
+
+	<script>
+		let _id = "";
+		function changeImg(_id) {
+			this._id = _id;
+			document.getElementById("imgHolder").style.opacity = "0";
+			document.getElementById("imgHolder").style.transition = "0.3s ease-in-out";
+			setTimeout(showImg, 300);
+		}
+
+		function showImg() {
+			document.getElementById("imgHolder").src = document.getElementById(this._id).src;
+			document.getElementById("imgHolder").style.opacity = "1";
+			document.getElementById("imgHolder").style.transition = "0.3s ease-in-out";
+		}
+
+		let value = 0;
+		var txt;
+		var sentence;
+		var cart = document.getElementById("cart");
+		function displayValue(_id) {
+			cart.innerHTML = "";
+			var text = document.createElement("p");
+			value = document.getElementById(_id).value;
+			txt = value + " " + document.getElementById("title").textContent + " will be added to cart of total " + value * document.getElementById("price").innerHTML;
+			sentence = document.createTextNode(txt);
+			text.appendChild(sentence);
+			cart.appendChild(text);
+		}
+	</script>
 </html>
