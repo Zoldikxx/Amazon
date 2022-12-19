@@ -27,10 +27,10 @@
 				</div>
 			</div>
 			<div class="navBar">
-				<a href="">Home</a>
-				<a href="">Products</a>
-				<a href="">Brands</a>
-				<a href="">Markets</a>
+				<a class="links" href="">Home</a>
+				<a class="links" href="">Products</a>
+				<a class="links" href="">Brands</a>
+				<a class="links" href="">Markets</a>
 			</div>
 			<div class="body">
 				<div class="grid-container">
@@ -47,8 +47,8 @@
 						<div id="brand">Sony</div>
 						<div id="title">PlayStation 5 Console (Disc Version) With Controller</div>
 						<div><p id="model">Model Number : CFI-1118A / PS5_Disc / CFI-1216A / CFI - 1116A/ CFI-1100A, CFI-1200A, CFI-1000A / CFI-1218A</p></div>
-						<span>EGP</span>
-						<strong id="price">22499.00</strong>
+						<div>EGP</div>
+						<div style="display: inline; font-weight: bold" id="price">22499.00</div>
 						<div>
 							<select name="quantity" id="quantity" onchange="displayValue(this.id)">
 								<option value="selected" disabled selected>Qunatity</option>
@@ -105,7 +105,7 @@
 			cart.innerHTML = "";
 			var text = document.createElement("p");
 			value = document.getElementById(_id).value;
-			txt = value + " " + document.getElementById("title").textContent + " will be added to cart of total " + value * document.getElementById("price").innerHTML;
+			txt = value + " " + document.getElementById("title").textContent + " will be added to cart of total " + value * document.getElementById("price").innerHTML + " EGP";
 			sentence = document.createTextNode(txt);
 			text.appendChild(sentence);
 			cart.appendChild(text);

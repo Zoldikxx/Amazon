@@ -13,42 +13,25 @@
 }
 
 .grid-item {
-	/* display: flex;
-	flex-direction: column; */
 	padding: 15px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	transition: 0.3s;
-	width: 100%;
-}
-
-.grid-item img {
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
+	border-radius: 50px;
+	height: 130px;
 }
 
 .grid-item:hover {
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-#title {
-	font-size: 24px;
-}
-
-#brand {
-	font-size: 15px;
-	color: gray;
-}
-
-#market {
-	font-size: 17px;
-}
-
-#price {
-	font-size: 20px;
-}
-
-#description {
-	font-size: 18px;
-	text-align: justify;
+.brands {
+	position: relative;
+	text-align: center;
+	top: 50%;
+	transform: translateY(-50%);
+	/* height: 100%; */
+	/* background-color: red; */
+	font-size: 30px;
+	font-variant: small-caps;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
