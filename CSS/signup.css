@@ -1,0 +1,74 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	background-image: url("../Assets/background.jpg");
+	background-size: cover;
+}
+
+.flex-container {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	background-color: rgb(236, 236, 236);
+	width: 320px;
+	height: 600px;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+}
+
+/* label {
+	font-size: 20px;
+} */
+
+.bar {
+	width: 230px;
+	border-radius: 4px;
+	margin-top: 2px;
+	height: 30px;
+	border: none;
+}
+
+.bar:focus {
+	outline: none;
+	border: 2px solid rgb(43, 185, 250);
+	border-color: dodgerblue;
+	box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+/* .bar:hover {
+	outline: none;
+	border: 2px solid rgb(43, 185, 250);
+	transition: 0.3s;
+} */
+
+.button {
+	width: 130px;
+	color: rgb(255, 255, 255);
+	font-size: 17px;
+	font-weight: bold;
+	padding: 10px 30px;
+	cursor: pointer;
+
+	background: rgb(7, 59, 102);
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+	margin-top: 10px;
+}
+
+.photo {
+	/* margin-left: 30px; */
+	left: 50%;
+	transform: translateX(-40%);
+}
+
+.flex-item {
+	align-self: center;
+	position: relative;
+	top: 50px;
+	margin-top: 10px;
+}

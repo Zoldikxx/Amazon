@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+	padding-top: 0px;
+	margin: 0;
+}
+
+body {
+	background-image: url("background.jpg");
+	background-size: cover;
+}
+
+input[type="text"] {
+	width: 30%;
+	border: 2px solid #aaa;
+	border-radius: 5px;
+	outline: none;
+	padding: 6px;
+}
+
+input[type="text"]:focus {
+	border-color: dodgerblue;
+	box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+input[type="submit"] {
+	width: 10%;
+	border: 1px solid #aaa;
+	outline: none;
+	padding: 6px;
+	color: blue;
+}
+
+input[type="submit"]:focus {
+	border-color: dodgerblue;
+	box-shadow: 0 0 8px 0 dodgerblue;
+	color: blue;
+}
+.form-container {
+	padding-top: 15%;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+		<link rel="stylesheet" href="../CSS/styles.css" />
+		<link rel="stylesheet" href="../CSS/cart.css" />
+		<title>Cart</title>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../Assets/580b57fcd9996e24bc43c518.png" alt="" />
+			<div class="grid-item-h headerBar">
+				<form action="" method="post">
+					<input type="text" name="search" id="searchBar" placeholder="Search" />
+					<button type="submit">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+				</form>
+			</div>
+			<div class="grid-item-h profile">
+				<a href="../HTML/cart.html"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
+				<a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+			</div>
+		</div>
+		<div class="navBar">
+			<a class="links" href="./homePage.html">Home</a>
+			<a class="links" href="./brandPage.html">Brands</a>
+			<a class="links" href="./marketPage.html">Markets</a>
+		</div>
+		<h1>Shopping Cart</h1>
+
+		<div class="shopping-cart">
+			<div class="column-labels">
+				<label class="product-image">Image</label>
+				<br />
+				<label class="product-details">Product</label>
+				<br />
+				<label class="product-price">Price</label>
+				<br />
+				<label class="product-quantity">Quantity</label>
+				<br />
+				<label class="product-removal">Remove</label>
+				<br />
+				<label class="product-line-price">Total</label>
+			</div>
+
+			<!-- It will be inside a for loop iterating on the selected products in DB 
+             rather than being that static -->
+
+			<div class="product">
+				<div class="product-image">
+					<img src="https://s.cdpn.io/3/dingo-dog-bones.jpg" />
+				</div>
+				<div class="product-details">
+					<div class="product-title">Dingo Dog Bones</div>
+					<p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+				</div>
+				<div class="product-price">12.99</div>
+				<div class="product-quantity">
+					<input type="number" value="2" min="1" />
+				</div>
+				<div class="product-removal">
+					<button class="remove-product">Remove</button>
+				</div>
+				<!-- Total price of items of the same product -->
+				<div class="product-line-price">25.98</div>
+			</div>
+
+			<hr />
+
+			<div class="totals">
+				<div class="totals-item">
+					<label>Subtotal</label>
+					<div class="totals-value" id="cart-subtotal">71.97</div>
+				</div>
+				<div class="totals-item">
+					<label>Tax (5%)</label>
+					<div class="totals-value" id="cart-tax">3.60</div>
+				</div>
+				<div class="totals-item">
+					<label>Shipping</label>
+					<div class="totals-value" id="cart-shipping">15.00</div>
+				</div>
+				<div class="totals-item totals-item-total">
+					<label>Grand Total</label>
+					<div class="totals-value" id="cart-total">90.57</div>
+				</div>
+			</div>
+
+			<button class="checkout">Checkout</button>
+		</div>
+	</body>
+</html>
