@@ -207,10 +207,13 @@
   width: 500px;
   font-size:3ch;
 }
+
 .profile-page{
     height: 250px;
   }
-body{
+
+body
+{
 	background-image: url("background.jpg");
     background-size:cover;
 }

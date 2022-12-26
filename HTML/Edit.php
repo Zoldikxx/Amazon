@@ -24,6 +24,7 @@ $name=$row["Username"];
 <body>
 <form method="post" action="Editprocess.php" >
 <div  class="edit-page">  
+    
    <center>
       <div class="user-image">
         <div >

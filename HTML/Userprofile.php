@@ -14,15 +14,16 @@ $name=$row["Username"];
     echo"<html lang='en'>";
          echo"<head>";
          echo"  <title>First Document</title>";
-        echo"<link href='CSS.css' rel='stylesheet' type='text/css'>";
-        echo" <link href='profilecss.css' rel='stylesheet'>";
+        echo"<link href='../CSS/CSS.css' rel='stylesheet' type='text/css'>";
+        echo" <link href='../CSS/profilecss.css' rel='stylesheet'>";
+        ECHO"<link rel='stylesheet' href='../CSS/C.css'>";
         echo" <link href='https://fonts.googleapis.com/css2?family=Oswald&display=swap' rel='stylesheet'>";
         echo"  <link href='https://fonts.googleapis.com/css2?family=Lato&display=swap' rel='stylesheet'>";
         echo"  <script src='https://kit.fontawesome.com/a076d05399.js'></script>";
           echo" </head>";
           echo"<body>";
         echo"  <div class='topnav'>";
-        echo"<a class='active' href=''>Home</a>";
+        echo"<a class='active' href='../HTML/homepage.html'>Home</a>";
 
         echo"<a href='Likedmarkets.html'>&#10084;Market</a>";
 
