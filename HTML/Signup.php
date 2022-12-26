@@ -9,6 +9,7 @@
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$location = mysqli_real_escape_string($conn, $_POST['location']);
 	$phone = $_POST['phone'];
+	$b=$_POST['balanceno'];
 	$photo = mysqli_real_escape_string($conn, $_POST['photo']);
     $user_type = $_POST['user_type'];
     if($user_type=="user")
@@ -27,12 +28,20 @@
 	{
       $error[] = 'user already exist!';
     }
-
 	else
 	{
-	     $insert = "INSERT INTO user (Email, UserPassword, Username , UserAddress, ULocation, Phone, UImage, UserTyp) VALUES('$email','$pass','$username','$address','$location','$phone','$photo','$usertype')";
+		if($usertype==0)
+		{
+	     $insert = "INSERT INTO user (Email, UserPassword, Username , UserAddress, ULocation, Phone, UImage, UserTyp,BalanceNo,Balance) VALUES('$email','$pass','$username','$address','$location','$phone','$photo','$usertype',0,0)";
          mysqli_query($conn, $insert);
          header('location:LoginForm.php');
+		}
+		if($usertype==1)
+		{
+	     $insert = "INSERT INTO user (Email, UserPassword, Username , UserAddress, ULocation, Phone, UImage, UserTyp,BalanceNo,Balance) VALUES('$email','$pass','$username','$address','$location','$phone','$photo','$usertype','$b',0)";
+         mysqli_query($conn, $insert);
+         header('location:LoginForm.php');
+		}
     }
 	
 	
@@ -49,7 +58,7 @@
 		<title>Sign UP</title>
 	</head>
 	<body>
-		<form>
+		<form action="#" method="post">
 			<div class="flex-container">
 				<h2 class="flex-item">CREATE ACCOUNT</h2>
 				<div class="flex-item">
