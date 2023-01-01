@@ -1,5 +1,6 @@
 <?php
 $con=new mysqli("127.0.0.1","root","","webproject");
+
 session_start();
 $USERID=$_SESSION["user_id"];
 $getter = $_GET["id"];
@@ -31,6 +32,7 @@ $items = $data['items_available']
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Online Shopping Site | High Quality Products</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
     <link rel='stylesheet' href='../CSS/CSS.css' >
 		<link rel="stylesheet" href="../CSS/styles.css" />
 		<link rel="stylesheet" href="..\CSS\productPage.css" />
@@ -95,11 +97,13 @@ $items = $data['items_available']
                   for($i = 1; $i <= $items; $i++){
                     echo "<option value=$i>$i</option>";
                   }
+
                   echo "<input type='submit' value='Add To Cart' />
                   </div>
                   <div id='cart'><p>Amount of items to be added in cart</p></div>";
                   echo "</select>";
                 }
+
                 ?>
           </form>
 					</div>

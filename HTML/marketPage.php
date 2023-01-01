@@ -1,6 +1,7 @@
 <?php
 $con=new mysqli("127.0.0.1","root","","webproject");
-$query = "select * from user where UserTyp = 'MARKET USER'";
+
+$query = "select * from user where UserTyp = '1'";
 $markets = $con -> query($query);
 ?>
 
@@ -43,8 +44,10 @@ $markets = $con -> query($query);
 				<div class="grid-container">
         <?php
           while($data2 = mysqli_fetch_array($markets)){
+
             $market = $data2["Username"];
             $id = $data2["Id"];
+
             echo "<a href='../HTML/homepage.php?marketId=".$id."'>";
             echo "<div class='grid-item'>
 						<div class='brands'>$market</div>

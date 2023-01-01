@@ -71,6 +71,7 @@ if(isset($_GET["brandId"])){
           echo "<div class='productInfo'>";
           echo "<div id='title'>$title</div>";
           echo "<div id='brand'>$brand</div>";
+
           echo "<em id='market'>$market</em>";
           echo "<br />";
           echo "<div id='price'>";

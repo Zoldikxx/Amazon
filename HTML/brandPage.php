@@ -13,11 +13,13 @@ $brands = $con -> query($query3);
 		<title>Online Shopping Site | High Quality Products</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel='stylesheet' href='../CSS/CSS.css' >
+
 		<link rel="stylesheet" href="../CSS/styles.css" />
 		<link rel="stylesheet" href="../CSS/marketBrandPage.css" />
 	</head>
 	<body>
 		<div class="page">
+
     <div class='topnav'>
       <a  href='./homepage.php'>Home</a>
       <a class='active' href='./brandPage.php'>Brands</a>
@@ -38,6 +40,7 @@ $brands = $con -> query($query3);
       <a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
     </div>
   </div>
+
 			<div class="body">
 				<!-- <h2>Products</h2> -->
 				<div class="grid-container">
