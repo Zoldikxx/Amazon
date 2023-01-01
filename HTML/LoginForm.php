@@ -7,7 +7,7 @@ if(isset($_POST['LogIn']))
 {
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = $_POST['password'];
-   $select = " SELECT * FROM user  WHERE  Email='$email' && Userpassword = '$pass' ";
+   $select = " SELECT * FROM user WHERE  Email='$email' && UserPassword = '$pass' ";
 
    $result = mysqli_query($conn, $select);
 
@@ -15,15 +15,15 @@ if(isset($_POST['LogIn']))
 
       $row = mysqli_fetch_array($result);
 
-      if($row['UserTyp']== 1){
+      if($row['UserTyp']== "1"){
 
          $_SESSION["user_id"]=$row["Id"];
-         header('location:MarketProfile.php');
+         header('location:homepage.php');
 
-      }elseif($row['UserTyp'] == 0){
+      }else if($row['UserTyp'] == "0"){
 
          $_SESSION["user_id"]=$row["Id"];
-         header('location:Userprofile.php');
+         header('location:homepage.php');
 
       }
      
@@ -59,7 +59,6 @@ if(isset($_POST['LogIn']))
                 };
             };
             ?>
-
             <label>Email: <input type="text" name="email" /></label><br>
             <br><br>			
 		    <label>Password: <input type="text" name="password" /></label><br>	

@@ -1,6 +1,9 @@
 <?php
 $con=new mysqli("127.0.0.1","root","","webproject");
 session_start();
+if(isset($_SESSION["user_id"])){
+  header('location:LoginForm.php');
+}
 $USERID=$_SESSION["user_id"];
 $sqlstm="select *  from user where Id='$USERID'";
 $res=$con->query($sqlstm);
@@ -13,7 +16,7 @@ $name=$row["Username"];
     echo" <!DOCTYPE html>";
     echo"<html lang='en'>";
          echo"<head>";
-         echo"  <title>First Document</title>";
+         echo"  <title>Market profile</title>";
         echo"<link href='../CSS/CSS.css' rel='stylesheet' type='text/css'>";
         echo" <link href='../CSS/profilecss.css' rel='stylesheet'>";
         ECHO"<link rel='stylesheet' href='../CSS/C.css'>";
@@ -24,21 +27,20 @@ $name=$row["Username"];
           echo"<body>";
         echo"  <div class='topnav'>";
         echo"<a class='active' href='../HTML/HOMEPAGE.html'>Home</a>";
-        echo"<a href='../HTML/addProducts.html'>Add Prodect</a>";
-        echo"<a href='../HTML/Likedmarkets.html'>&#10084;Market</a>";
-        echo" <a href='../HTML/marketPage.html'>Market prodect</a>";
-        echo" <a href='../HTML/Favoriteproducts.html'>&#10084;Prodect</a>";
+        echo"<a href='../HTML/addProducts.php'>Add Prodect</a>";
+        echo"<a href='../HTML/Likedmarkets.php'>&#10084;Market</a>";
+        echo" <a href='../HTML/marketPage.php'>Market prodect</a>";
+        echo" <a href='../HTML/Favoriteproducts.php'>&#10084;Prodect</a>";
 
     echo"<input type='checkbox' id='active'>";
     echo" <label for='active' class='menu-btn'><span></span></label>";
     echo" <label for='active' class='close'></label>";
     echo"<div class='wrapper'> <ul>";
       echo"<li><a href='Edit.php'>EDIT</a></li>";
-      echo" <li><a href='#'>DELETE</a></li>";
+      echo" <li><a href='marketproduct.php'>PRODUCTE</a></li>";
+      echo" <li><a  href='Purchasedproducts.php'>Purchased </a></li>";
       echo" <li><a  href='logout.php'>LOGOUT</a></li></ul></div>";
       echo"</div>";
-
-
           echo"</body>";
           echo"</html>";
     echo"<center>";

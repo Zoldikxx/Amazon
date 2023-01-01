@@ -10,6 +10,12 @@ a {
 	/* margin: 25px; */
 }
 
+#cartNum {
+	margin-right: 20px;
+	color: black;
+	font-size: 25px;
+}
+
 .links:hover {
 	/* background-color: gray; */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -21,7 +27,7 @@ a {
 	grid-template-columns: repeat(3, 3fr);
 	grid-template-rows: 50px;
 	justify-items: start;
-	background-color: #add8e6;
+	background-color: #ffffff;
 	color: white;
 }
 
@@ -51,9 +57,15 @@ h1 {
 	width: 10%;
 	height: 30px;
 	border-radius: 7px;
+	cursor: pointer;
+}
+
+.grid-item-h {
+	margin-right: 10px;
 }
 
 .profile {
+	display: flex;
 	align-self: center;
 	justify-self: end;
 	justify-items: end;

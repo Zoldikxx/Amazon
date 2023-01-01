@@ -8,13 +8,11 @@ if(isset($_GET["brandId"])){
   $getter = $_GET["marketId"];
   $query = "select * from products where market_id = $getter";
   $res = $con -> query($query);
-}
-// else if(isset($_POST["search"])){
-//   $getter = $_POST["search"];
-//   $query = "select * from products where product_name like %.$getter.%";
-//   $res = $con -> query($query);
-// }
-else{
+}else if(isset($_POST["search"])){
+  $getter = $_POST["search"];
+  $query = "select * from `products` where concat (`product_id`, `product_name`, `brief_description`, `full_description`, `extra_info`, `price`, `items_available`, `product_image`, `brand_id`, `brand_name`, `market_id`, `market_name`) like '%".$getter."%'";
+  $res = $con -> query($query);
+}else{
   $query = "select * from products";
   $res = $con -> query($query);
 }
@@ -27,31 +25,32 @@ else{
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Online Shopping Site | High Quality Products</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel='stylesheet' href='../CSS/CSS.css' >
 		<link rel="stylesheet" href="../CSS/styles.css" />
 		<link rel="stylesheet" href="../CSS/homepage.css" />
 	</head>
 	<body>
 		<div class="page">
-			<div class="header">
-				<img src="../Assets/580b57fcd9996e24bc43c518.png" alt="" />
-				<div class="grid-item-h headerBar">
-					<form action="homepage.php" method="post">
-						<input type="text" name="search" id="searchBar" placeholder="Search" />
-						<button type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</button>
-					</form>
-				</div>
-				<div class="grid-item-h profile">
-					<a href="../HTML/cart.html"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
-					<a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-				</div>
-			</div>
-			<div class="navBar">
-				<a class="links" href="./homePage.php">Home</a>
-				<a class="links" href="./brandPage.php">Brands</a>
-				<a class="links" href="./marketPage.php">Markets</a>
-			</div>
+    <div class='topnav'>
+      <a class='active' href='./homePage.php'>Home</a>
+      <a href='./brandPage.php'>Brands</a>
+      <a href='./marketPage.php'>Markets</a>
+    </div>
+    <div class="header">
+    <img src="" alt="" />
+    <div class="grid-item-h headerBar">
+      <form action="homepage.php" method="post">
+        <input type="text" name="search" id="searchBar" placeholder="Search" />
+        <button type="submit">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+    <div class="grid-item-h profile">
+      <a href="../HTML/cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
+      <a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+    </div>
+  </div>
 			<div class="body">
 				<div class="grid-container">
         <?php
@@ -59,12 +58,10 @@ else{
         {
           $product_id = $data["product_id"];
           $brand_id = $data["brand_id"];
-          $query2 = "select * from brands where brand_id = $brand_id";
-          $res2 = $con -> query($query2);
-          $data2 = mysqli_fetch_array($res2);
           $img = $data["product_image"];
           $title = $data["product_name"];
-          $brand = $data2["brand_name"];
+          $brand = $data["brand_name"];
+          $market = $data["market_name"];
           $price = $data["price"];
           $brief = $data["brief_description"];
 
@@ -74,7 +71,7 @@ else{
           echo "<div class='productInfo'>";
           echo "<div id='title'>$title</div>";
           echo "<div id='brand'>$brand</div>";
-          echo "<em id='market'>EXPRESS</em>";
+          echo "<em id='market'>$market</em>";
           echo "<br />";
           echo "<div id='price'>";
           echo "<strong>EGP $price</strong>";
