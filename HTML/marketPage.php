@@ -1,6 +1,7 @@
 <?php
 $con=new mysqli("127.0.0.1","root","","webproject");
-$query = "select * from markets";
+
+$query = "select * from user where UserTyp = '1'";
 $markets = $con -> query($query);
 ?>
 
@@ -12,38 +13,41 @@ $markets = $con -> query($query);
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Online Shopping Site | High Quality Products</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel='stylesheet' href='../CSS/CSS.css' >
 		<link rel="stylesheet" href="../CSS/styles.css" />
 		<link rel="stylesheet" href="../CSS/marketBrandPage.css" />
 	</head>
 	<body>
 		<div class="page">
-			<div class="header">
-				<img src="../Assets/580b57fcd9996e24bc43c518.png" alt="" />
-				<div class="grid-item-h headerBar">
-					<form action="" method="post">
-						<input type="text" name="search" id="searchBar" placeholder="Search" />
-						<button type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</button>
-					</form>
-				</div>
-				<div class="grid-item-h profile">
-					<a href=""><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
-					<a href=""><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-				</div>
-			</div>
-			<div class="navBar">
-				<a class="links" href="./homepage.php">Home</a>
-				<a class="links" href="./brandPage.php">Brands</a>
-				<a class="links" href="./marketPage.php">Markets</a>
-			</div>
+    <div class='topnav'>
+      <a href='./homepage.php'>Home</a>
+      <a href='./brandPage.php'>Brands</a>
+      <a class='active' href='./marketPage.php'>Markets</a>
+    </div>
+    <div class="header">
+    <img src="" alt="" />
+    <div class="grid-item-h headerBar">
+    <form action="homepage.php" method="post">
+        <input type="text" name="search" id="searchBar" placeholder="Search" />
+        <button type="submit">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+    <div class="grid-item-h profile">
+      <a href="../HTML/cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
+      <a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+    </div>
+  </div>
 			<div class="body">
 				<!-- <h2>Products</h2> -->
 				<div class="grid-container">
         <?php
           while($data2 = mysqli_fetch_array($markets)){
-            $market = $data2["market_name"];
-            $id = $data2["market_id"];
+
+            $market = $data2["Username"];
+            $id = $data2["Id"];
+
             echo "<a href='../HTML/homepage.php?marketId=".$id."'>";
             echo "<div class='grid-item'>
 						<div class='brands'>$market</div>

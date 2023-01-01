@@ -1,6 +1,6 @@
 <?php
   $con = mysqli_connect('localhost','root','','webproject');
-  $query = "select * from purchased where UId = 2";
+  $query = "select * from purchased where UId = 1";
   $purchased = $con -> query($query);
 ?>
 

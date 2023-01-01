@@ -23,11 +23,11 @@ $name=$row["Username"];
           echo" </head>";
           echo"<body>";
         echo"  <div class='topnav'>";
-        echo"<a class='active' href='../HTML/homepage.html'>Home</a>";
+        echo"<a class='active' href='../HTML/homepage.php'>Home</a>";
 
-        echo"<a href='Likedmarkets.html'>&#10084;Market</a>";
+        echo"<a href='Likedmarkets.php'>&#10084;Market</a>";
 
-        echo" <a href='Favoriteproducts.html'>&#10084;Prodect</a>";
+        echo" <a href='Favoriteproducts.php'>&#10084;Prodect</a>";
 
     echo"<input type='checkbox' id='active'>";
     echo" <label for='active' class='menu-btn'><span></span></label>";

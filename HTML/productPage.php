@@ -1,12 +1,13 @@
 <?php
 $con=new mysqli("127.0.0.1","root","","webproject");
+
+session_start();
+$USERID=$_SESSION["user_id"];
 $getter = $_GET["id"];
 $query = "select * from imgs where product_id = $getter";
 $query2 = "select * from products where product_id = $getter";
-// $query3 = "select * from brands where product_id = $getter";
 $imgs = $con -> query($query);
 $products = $con -> query($query2);
-// $brands = $con -> query($query3);
 $data = mysqli_fetch_array($products);
 $id = $data["product_id"];
 $brand_id = $data["brand_id"];
@@ -31,31 +32,33 @@ $items = $data['items_available']
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Online Shopping Site | High Quality Products</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+    <link rel='stylesheet' href='../CSS/CSS.css' >
 		<link rel="stylesheet" href="../CSS/styles.css" />
 		<link rel="stylesheet" href="..\CSS\productPage.css" />
 	</head>
 	<body>
 		<div class="page">
-			<div class="header">
-				<img src="../Assets/580b57fcd9996e24bc43c518.png" alt="" />
-				<div class="grid-item headerBar">
-					<form action="" method="post">
-						<input type="text" name="search" id="searchBar" placeholder="Search" />
-						<button type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</button>
-					</form>
+    <div class='topnav'>
+				<a class='active' href='./homepage.php'>Home</a>
+				<a href='./brandPage.php'>Brands</a>
+			    <a href='./marketPage.php'>Markets</a>
+				 </div>
+				 <div class="header">
+					<img src="" alt="" />
+					<div class="grid-item-h headerBar">
+						<form action="" method="post">
+							<input type="text" name="search" id="searchBar" placeholder="Search" />
+							<button type="submit">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
+						</form>
+					</div>
+					<div class="grid-item-h profile">
+						<a href="../HTML/cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
+						<a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+					</div>
 				</div>
-				<div class="grid-item profile">
-					<a href=""><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
-					<a href=""><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
-				</div>
-			</div>
-			<div class="navBar">
-				<a class="links" href="./homePage.php">Home</a>
-				<a class="links" href="./brandPage.php">Brands</a>
-				<a class="links" href="./marketPage.php">Markets</a>
-			</div>
 			<div class="body">
 				<div class="grid-container">
 					<div class="grid-item item-1">
@@ -83,6 +86,7 @@ $items = $data['items_available']
             <?php
 						echo "<div style='font-weight: bold' id='price'>$price</div>"
             ?>
+            <form action='cart.php' method='post'>
               <?php
               if($items == 0)
               echo "<div style='color: red'>Item not in stock</div>";
@@ -93,14 +97,15 @@ $items = $data['items_available']
                   for($i = 1; $i <= $items; $i++){
                     echo "<option value=$i>$i</option>";
                   }
-                  echo "<input type='button' value='Add To Cart' />
+
+                  echo "<input type='submit' value='Add To Cart' />
                   </div>
                   <div id='cart'><p>Amount of items to be added in cart</p></div>";
                   echo "</select>";
                 }
 
-              ?>
-
+                ?>
+          </form>
 					</div>
 					<div class="grid-item item-4">
 						<div>No warranty</div>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+		<link rel="stylesheet" href="../CSS/CSS.css" />
+		<link rel="stylesheet" href="../CSS/styles.css" />
+		<link rel="stylesheet" href="../CSS/cart.css" />
+		<title>Cart</title>
+	</head>
+
+	<body>
+		<div class="topnav">
+			<a href="./homePage.php">Home</a>
+			<a href="./brandPage.php">Brands</a>
+			<a href="./marketPage.php">Markets</a>
+		</div>
+		<div class="header">
+			<img src="" alt="" />
+			<div class="grid-item-h headerBar">
+				<form action="homepage.php" method="post">
+					<input type="text" name="search" id="searchBar" placeholder="Search" />
+					<button type="submit">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+				</form>
+			</div>
+			<div class="grid-item-h profile">
+				<a href="../HTML/cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+				<div id="cartNum">(0)</div>
+				<a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+			</div>
+		</div>
+
+		<div class="body">
+			<h1>Shopping Cart</h1>
+			<div class="body-container">
+				<div class="flex-container">
+					<div class="flex-item">
+						<div class="product-image">
+							<img src="https://s.cdpn.io/3/dingo-dog-bones.jpg" />
+						</div>
+						<div class="product-details">
+							<div class="product-title">Dingo Dog Bones</div>
+							<p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+						</div>
+						<div style="display: flex">
+							<div style="margin-right: 4px">EGP</div>
+							<div style="font-weight: bold" class="product-price" id="price">12.99</div>
+						</div>
+						<div class="product-quantity">
+							<select class="select" name="quantity" id="quantity" onchange="calculateItemPrice(this.id)">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3" selected>3</option>
+								<option value="4">4</option>
+							</select>
+						</div>
+						<div class="product-removal">
+							<a href=""><i class="clickable fa fa-minus-square-o fa-2x" aria-hidden="true"></i></a>
+						</div>
+						<div style="display: flex">
+							<div style="margin-right: 4px">EGP</div>
+							<div style="font-weight: bold" class="product-line-price" id="totalPrice">12.99</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="totals">
+					<div class="totals-item">
+						<label>Subtotal</label>
+						<div class="totals-value" id="cart-subtotal"></div>
+					</div>
+					<div class="totals-item">
+						<label>Tax (5%)</label>
+						<div class="totals-value" id="cart-tax"></div>
+					</div>
+					<div class="totals-item">
+						<label>Shipping</label>
+						<div class="totals-value" id="cart-shipping">15.00</div>
+					</div>
+					<div class="totals-item totals-item-total">
+						<label>Grand Total</label>
+						<div class="totals-value" id="cart-total"></div>
+					</div>
+					<button class="checkout">Checkout</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			//var value = 0;
+			function calculateItemPrice(id) {
+				let totalprice = document.getElementById("totalPrice");
+				let value = document.getElementById(id).value;
+				let total = document.getElementById("price").innerHTML;
+				totalprice.innerHTML = "";
+				let num = total * value;
+				let text = document.createTextNode(num);
+				totalprice.appendChild(text);
+				calculateCartTotal();
+			}
+
+			let cartItems = document.getElementsByClassName("product-line-price");
+			//let num = 0;
+
+			let cartSubtotal = document.getElementById("cart-subtotal");
+			let tax = document.getElementById("cart-tax");
+			let grandTotal = document.getElementById("cart-total");
+
+			function calculateCartTotal() {
+				cartSubtotal.innerHTML = "";
+				for (let i = 0; i < cartItems.length; i++) {
+					cartSubtotal.innerHTML += parseInt(cartItems[i].innerHTML);
+				}
+				tax.innerHTML = (cartSubtotal.innerHTML * 0.05).toFixed(2);
+				grandTotal.innerHTML = parseFloat(tax.innerHTML) + parseFloat(cartSubtotal.innerHTML) + parseFloat(document.getElementById("cart-shipping").innerHTML);
+			}
+			window.onload = calculateItemPrice("quantity");
+		</script>
+	</body>
+</html>
