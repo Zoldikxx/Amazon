@@ -8,9 +8,22 @@ if(isset($_POST['del']))
 
 {  
 	$v=$_POST['productid'];
-	$sqlstm2= "DELETE FROM products WHERE market_id = $USERID and product_id=$v";
+	$sqlstm2= "DELETE FROM products WHERE product_id=$v";
+  $sqlstm22= "DELETE FROM cart WHERE product_id=$v";
+  $sqlstm23= "DELETE FROM favoriteproduct WHERE product_id=$v";
+  $sqlstm24= "DELETE FROM purchased WHERE product_id=$v";
 	$con->query($sqlstm2);
+  $con->query($sqlstm22);
+  $con->query($sqlstm23);
+  $con->query($sqlstm24);
 }
+
+$USERID = $_SESSION['user_id'];
+$sqlstm = "select * from cart where user_id='$USERID'";
+$res12 = $con->query($sqlstm);
+// $row = mysqli_fetch_array($res);
+
+$row_count = mysqli_num_rows($res12);
 
 ?>
 
@@ -27,7 +40,9 @@ if(isset($_POST['del']))
   <div class='topnav'>
       <a href='./homepage.php'>Home</a>
       <a href='./brandPage.php'>Brands</a>
-      <a class='active' href='./marketPage.php'>Markets</a>
+      <a href='./marketPage.php'>Markets</a>
+      <a href='../HTML/Likedmarkets.php'>&#10084;Market</a>
+        <a href='../HTML/Favoriteproducts.php'>&#10084;Prodect</a>
     </div>
     <div class="header">
     <img src="" alt="" />
@@ -39,9 +54,11 @@ if(isset($_POST['del']))
         </button>
       </form>
     </div>
+<div class='grid-item-h profile'>
+<a href='../HTML/cart.php'><i class='fa fa-shopping-cart fa-2x' aria-hidden='true'></i> </a>
+<div id="cartNum">(<?php echo $row_count ?>)</div>
+
    <?php
-  echo"  <div class='grid-item-h profile'>";
-  echo"  <a href='../HTML/cart.php'><i class='fa fa-shopping-cart fa-2x' aria-hidden='true'></i> </a>";
   $sqlstm="select *  from user where Id='$USERID'";
 $res=$con->query($sqlstm);
 $row=mysqli_fetch_array($res);

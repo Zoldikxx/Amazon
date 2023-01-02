@@ -1,7 +1,7 @@
 <?php
 session_start();
-// $USERID = $_SESSION["user_id"];
-$conn = mysqli_connect('localhost', 'root', '', 'webproject');
+$USERID = $_SESSION["user_id"];
+$con = mysqli_connect('localhost', 'root', '', 'webproject');
 
 if (isset($_POST['addProduct'])) {
 	$productName = $_POST['productName'];
@@ -29,6 +29,8 @@ VALUES('$productName','$brandName','$productBriefDescription',
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="../CSS/addProduct.css" />
+  <link rel="stylesheet" href="../CSS/footer.css" />
+
 	<title>Add Product</title>
 </head>
 

@@ -23,7 +23,7 @@ $name=$row["Username"];
           echo" </head>";
           echo"<body>";
         echo"  <div class='topnav'>";
-        echo"<a class='active' href='../HTML/homepage.php'>Home</a>";
+        echo"<a href='../HTML/homepage.php'>Home</a>";
 
         echo"<a href='Likedmarkets.php'>&#10084;Market</a>";
 

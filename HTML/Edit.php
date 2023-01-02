@@ -18,8 +18,8 @@ $name=$row["Username"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> edit profile</title>
-    <link href='Css.css' rel='stylesheet' type='text/css'>
-    <link href='edit.css' rel='stylesheet' type='text/css'>
+    <link href='../CSS/CSS.css' rel='stylesheet' type='text/css'>
+    <link href='../CSS/edit.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <form method="post" action="Editprocess.php" >
