@@ -12,6 +12,13 @@ if(isset($_POST['del']))
 	$con->query($sqlstm2);
 }
 
+$USERID = $_SESSION['user_id'];
+$sqlstm = "select * from cart where user_id='$USERID'";
+$res12 = $con->query($sqlstm);
+// $row = mysqli_fetch_array($res);
+
+$row_count = mysqli_num_rows($res12);
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +34,9 @@ if(isset($_POST['del']))
   <div class='topnav'>
       <a href='./homepage.php'>Home</a>
       <a href='./brandPage.php'>Brands</a>
-      <a class='active' href='./marketPage.php'>Markets</a>
+      <a href='./marketPage.php'>Markets</a>
+      <a href='../HTML/Likedmarkets.php'>&#10084;Market</a>
+      <a class='active' href='../HTML/Favoriteproducts.php'>&#10084;Prodect</a>
     </div>
     <div class="header">
     <img src="" alt="" />
@@ -41,7 +50,27 @@ if(isset($_POST['del']))
     </div>
     <div class="grid-item-h profile">
       <a href="../HTML/cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
-      <a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+      <div id="cartNum">(<?php echo $row_count ?>)</div>
+      <?php
+  $sqlstm="select *  from user where Id='$USERID'";
+$res=$con->query($sqlstm);
+$row=mysqli_fetch_array($res);
+  if($row['UserTyp']== 1)
+{
+
+   $profilelink="Marketprofile.php";
+
+ }else if($row['UserTyp'] == 0)
+ {
+
+   
+    $profilelink="Userprofile.php";
+ }
+
+  echo"   <a href='../HTML/$profilelink'><i class='fa fa-user fa-2x' aria-hidden='true'></i></a>";
+  echo" </div>";
+
+  ?>
     </div>
   </div>
 		<div class="body">

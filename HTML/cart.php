@@ -52,7 +52,26 @@ $row_count = mysqli_num_rows($res);
 			<div class="grid-item-h profile">
 				<a href="../HTML/cart.php"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
 				<div id="cartNum">(<?php echo $row_count ?>)</div>
-				<a href="../HTML/Userprofile.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <?php
+      $sqlstm="select *  from user where Id='$USERID'";
+$res2=$con->query($sqlstm);
+$row=mysqli_fetch_array($res2);
+  if($row['UserTyp']== 1)
+{
+
+   $profilelink="Marketprofile.php";
+
+ }else if($row['UserTyp'] == 0)
+ {
+
+   
+    $profilelink="Userprofile.php";
+ }
+
+  echo"   <a href='../HTML/$profilelink'><i class='fa fa-user fa-2x' aria-hidden='true'></i></a>";
+  echo" </div>";
+
+  ?>
 			</div>
 		</div>
 
@@ -124,25 +143,32 @@ $row_count = mysqli_num_rows($res);
         }
 		  ?>
       </div>
-      <div class="totals">
-					<div class="totals-item">
-						<label>Subtotal</label>
-						<div class="totals-value" id="cart-subtotal"></div>
-					</div>
-					<div class="totals-item">
-						<label>Tax (5%)</label>
-						<div class="totals-value" id="cart-tax"></div>
-					</div>
-					<div class="totals-item">
-						<label>Shipping</label>
-						<div class="totals-value" id="cart-shipping">FREE</div>
-					</div>
-					<div class="totals-item totals-item-total">
-						<label>Grand Total</label>
-						<div class="totals-value" id="cart-total"></div>
-					</div>
-					<button class="checkout">Checkout</button>
-				</div>
+
+      <?php
+        if($row_count == 0){
+          echo "<div id='noItems'> You have not added any items to the cart yet!</div>";
+        }else{
+          echo "<div class='totals'>
+                <div class='totals-item'>
+                  <label>Subtotal</label>
+                  <div class='totals-value' id='cart-subtotal'></div>
+                </div>
+                <div class='totals-item'>
+                  <label>Tax (5%)</label>
+                  <div class='totals-value' id='cart-tax'></div>
+                </div>
+                <div class='totals-item'>
+                  <label>Shipping</label>
+                  <div class='totals-value' id='cart-shipping'>FREE</div>
+                </div>
+                <div class='totals-item totals-item-total'>
+                  <label>Grand Total</label>
+                  <div class='totals-value' id='cart-total'></div>
+                </div>
+                <button class='checkout'>Checkout</button>
+              </div>";
+          }
+        ?>
     </div>
   </div>
 

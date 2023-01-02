@@ -40,8 +40,8 @@
                 <p name='description'>$brief</p>
                 <div>Bought: $quantity</div> 
                 </div>";
-              }
-          // }
+              // }
+          }
         ?>
         </div>
     </body>

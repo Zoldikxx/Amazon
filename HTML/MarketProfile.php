@@ -1,7 +1,7 @@
 <?php
 $con=new mysqli("127.0.0.1","root","","webproject");
 session_start();
-if(isset($_SESSION["user_id"])){
+if(!isset($_SESSION["user_id"])){
   header('location:LoginForm.php');
 }
 $USERID=$_SESSION["user_id"];
@@ -26,20 +26,21 @@ $name=$row["Username"];
           echo" </head>";
           echo"<body>";
         echo"  <div class='topnav'>";
-        echo"<a class='active' href='../HTML/HOMEPAGE.html'>Home</a>";
-        echo"<a href='../HTML/addProducts.php'>Add Prodect</a>";
-        echo"<a href='../HTML/Likedmarkets.php'>&#10084;Market</a>";
-        echo" <a href='../HTML/marketPage.php'>Market prodect</a>";
-        echo" <a href='../HTML/Favoriteproducts.php'>&#10084;Prodect</a>";
+        echo "<a href='./homepage.php'>Home</a>
+        <a href='./brandPage.php'>Brands</a>
+        <a href='./marketPage.php'>Markets</a>
+        <a href='../HTML/Likedmarkets.php'>&#10084;Market</a>
+          <a href='../HTML/Favoriteproducts.php'>&#10084;Prodect</a>";
 
     echo"<input type='checkbox' id='active'>";
     echo" <label for='active' class='menu-btn'><span></span></label>";
     echo" <label for='active' class='close'></label>";
     echo"<div class='wrapper'> <ul>";
-      echo"<li><a href='Edit.php'>EDIT</a></li>";
-      echo" <li><a href='marketproduct.php'>PRODUCTE</a></li>";
-      echo" <li><a  href='Purchasedproducts.php'>Purchased </a></li>";
-      echo" <li><a  href='logout.php'>LOGOUT</a></li></ul></div>";
+      echo"<li><a href='Edit.php'>Edit</a></li>";
+      echo" <li><a href='marketproduct.php'>Product</a></li>";
+      echo" <li><a  href='Purchasedproducts.php'>Purchased</a></li>";
+      echo" <li><a  href='cart.php'>Cart</a></li>";
+      echo" <li><a  href='logout.php'>Logout</a></li></ul></div>";
       echo"</div>";
           echo"</body>";
           echo"</html>";
